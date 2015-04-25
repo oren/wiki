@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#create new dokuwiki container, but don't start it yet
+docker create -p 8000:80 --name dokuwiki istepanov/dokuwiki
+
+# create data container for persistency (optional)
+docker run --volumes-from dokuwiki --name dokuwiki-data busybox
+
+# restore from backup using temporary container
+docker run --rm --volumes-from dokuwiki -w / -v $(pwd):/backup ubuntu tar xzvf /backup/dokuwiki-backup.tar.gz
+
+# start dokuwiki
+docker start dokuwiki
