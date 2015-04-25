@@ -19,16 +19,20 @@ Open [http://laptop-wiki.company.com](http://laptop-wiki.company.com)
 ## Stop
 
     bin/rm
+    
+Stop and rm the containers
 
 ## Backup
 
-   bin/backup
+    bin/backup
    
 It creates a file named dokuwiki-backup-2015-04-25.tar.gz
 
 ## Restore
 
-    bin/restore YYYY-MM-DD   # pass the date which is part of the backup file. for example: bin/restore 2015-04-25
+    bin/restore YYYY-MM-DD
+    
+`YYY-MM-DD` is the date part of the backup file. for example: `bin/restore 2015-04-25` will restore dokuwiki-backup-2015-04-25.tar.gz. The restore command also `rm` and `run` the wiki. 
 
 ## Setup on production server
 
@@ -50,3 +54,7 @@ It creates a file named dokuwiki-backup-2015-04-25.tar.gz
     git clone https://oauth-token@github.com/company/wiki.git
     bin/build
     bin/run
+
+## TODO (PRs are welcome!)
+
+Docker image for provisioning, deploying and starting a wiki on Production server
