@@ -1,5 +1,7 @@
 # DokuWiki with Docker
 
+![screenshot](screenshot.png)
+
 Based on https://github.com/istepanov/docker-dokuwiki
 
 ## Setup the server
