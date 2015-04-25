@@ -1,6 +1,6 @@
 # DokuWiki with Docker
 
-based on https://github.com/istepanov/docker-dokuwiki
+Based on https://github.com/istepanov/docker-dokuwiki
 
 ## Setup the server
 
@@ -31,7 +31,8 @@ based on https://github.com/istepanov/docker-dokuwiki
 ## Run
 
     bin/run
-    open [http://laptop-wiki.company.com](http://laptop-wiki.company.com)
+
+Open [http://laptop-wiki.company.com](http://laptop-wiki.company.com)
 
 ## Stop
 
@@ -39,7 +40,9 @@ based on https://github.com/istepanov/docker-dokuwiki
 
 ## Backup
 
-   bin/backup   # it creates a file named dokuwiki-backup-2015-04-25.tar.gz
+   bin/backup
+   
+It creates a file named dokuwiki-backup-2015-04-25.tar.gz
 
 ## Restore
 
