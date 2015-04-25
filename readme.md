@@ -1,4 +1,4 @@
-# DokuWiki Wiki
+# DokuWiki with Docker
 
 based on https://github.com/istepanov/docker-dokuwiki
 
