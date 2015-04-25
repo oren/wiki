@@ -12,9 +12,10 @@ RUN chown -R www-data:www-data /var/www
 RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 RUN rm /etc/nginx/sites-enabled/*
-ADD dokuwiki.conf /etc/nginx/sites-enabled/
-COPY foobar.chained.crt /etc/ssl/certs/
-COPY foobar.key /etc/ssl/private/
+
+COPY nginx/dokuwiki.conf /etc/nginx/sites-enabled/
+COPY nginx/company.chained.crt /etc/ssl/certs/
+COPY nginx/company.key /etc/ssl/private/
 
 EXPOSE 80
 EXPOSE 443

@@ -1,4 +1,5 @@
 #!/bin/bash
 
 # create dokuwiki-backup.tar.gz archive in current directory using temporaty container
-docker run --rm --volumes-from dokuwiki -v $(pwd):/backup ubuntu tar zcvf /backup/dokuwiki-backup.tar.gz /var/www
+docker run --rm --volumes-from dokuwiki -v $(pwd):/backup ubuntu tar zcfP /backup/dokuwiki-backup-$(date +"%Y-%m-%d").tar.gz /var/www
+echo Backup file dokuwiki-backup-$(date +"%Y-%m-%d").tar.gz was created

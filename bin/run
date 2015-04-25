@@ -1,6 +1,7 @@
 #!/bin/bash
 
-docker run -d -p 8000:80 --name dokuwiki istepanov/dokuwiki
+docker run -d -p 80:80 -p 443:443 --name dokuwiki dokuwiki
 
 # create data container
 docker run --volumes-from dokuwiki --name dokuwiki-data busybox
+

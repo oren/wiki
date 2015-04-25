@@ -1,13 +1,20 @@
 #!/bin/bash
 
+if [[ $# -eq 0 ]] ; then
+  echo 'please pass date of backup file. for example: bin/restore 2015-04-25'
+  exit 1
+fi
+
+bin/rm /dev/null 2>&1
+
 #create new dokuwiki container, but don't start it yet
-docker create -p 8000:80 --name dokuwiki istepanov/dokuwiki
+docker run -d -p 80:80 -p 443:443 --name dokuwiki dokuwiki
 
 # create data container for persistency (optional)
 docker run --volumes-from dokuwiki --name dokuwiki-data busybox
 
 # restore from backup using temporary container
-docker run --rm --volumes-from dokuwiki -w / -v $(pwd):/backup ubuntu tar xzvf /backup/dokuwiki-backup.tar.gz
+docker run --rm --volumes-from dokuwiki -w / -v $(pwd):/backup ubuntu tar xzvf /backup/dokuwiki-backup-$1.tar.gz
 
 # start dokuwiki
 docker start dokuwiki

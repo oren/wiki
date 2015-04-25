@@ -1,9 +1,9 @@
 server {
-    listen 80;
-
+    server_name HOST;
+    listen 80 default_server;
     root /var/www;
     index index.php index.html index.htm;
-    
+
     location / {
         index doku.php;
         try_files $uri $uri/ @dokuwiki;
@@ -30,22 +30,5 @@ server {
 
     location ~ /(data|conf|bin|inc)/ {
         deny all;
-    }
-}
-
-server {
-    root /var/www;
-    index index.php index.html index.htm;
-    listen 443 ssl;
-    keepalive_requests    10;
-    keepalive_timeout     60 60;
-
-    ssl_certificate /etc/ssl/certs/company.chained.crt;
-    ssl_certificate_key /etc/ssl/private/company.key;
-
-    #switch back to plain http for normal view
-
-    if ($args ~* (do=show|^$)){
-        rewrite ^ http://$host$request_uri? redirect;
     }
 }

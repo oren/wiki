@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source /etc/environment
+bin/replace_variables_no_ssl
+docker build -t dokuwiki .

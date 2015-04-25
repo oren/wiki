@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker stop dokuwiki /dev/null 2>&1
+docker rm dokuwiki /dev/null 2>&1
+docker rm dokuwiki-data /dev/null 2>&1

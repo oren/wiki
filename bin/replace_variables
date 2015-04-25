@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# inject docker gateway and server_name in default.conf
+
+red=`tput setaf 1`
+green=`tput setaf 2`
+yellow=`tput setaf 3`
+reset=`tput sgr0`
+
+cp nginx/dokuwiki.conf.example nginx/dokuwiki.conf
+
+# replace server_host
+host=$HOST; 
+# : is 'do nothing' command. it emits the value, then tries to run it
+: ${host:=laptop-wiki.company.com};
+
+str=s/HOST/$host/g
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+    sed -i $str nginx/dokuwiki.conf
+else
+    $(perl -p -i -e $str nginx/dokuwiki.conf)
+fi

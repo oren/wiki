@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source /etc/environment
+bin/replace_variables
+docker build -t dokuwiki .
