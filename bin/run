@@ -5,3 +5,21 @@ docker run -d -p 80:80 -p 443:443 --name dokuwiki dokuwiki
 # create data container
 docker run --volumes-from dokuwiki --name dokuwiki-data busybox
 
+
+# you basically have a container whose purpose is to be a placeholder
+# volumes-from mounts the data volumes of dokuwiki container into dokuwiki-data
+# so now when dokuwiki goes down, those volumes dont
+# its a container that basically stores data
+# so its basically a directory
+# it binds teh data volume from on container to another
+# so it takes the data volume of dokuwiki, which is probably empty to start
+# and shares it with another container
+# so when dokuwiki goes up and down, that volume persists
+
+# when a container is created/run, a data volume is created within it
+# data volumes exist within containers, but they are also abstractions
+# data volumes will persist if owned by any containers
+# so, the idea is that you make a container whose existance is simply to hold that volume
+
+ # you'll need to mount docker.sock into the container
+
