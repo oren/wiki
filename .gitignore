@@ -1,2 +1,3 @@
 dokuwiki-backup*
 nginx/dokuwiki.conf
+backups/*
